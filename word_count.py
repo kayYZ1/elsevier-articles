@@ -63,8 +63,8 @@ def map_char_count_no_space(data):
     return char_counts_no_space
 
 
-data_2013 = gather_data("articles_2013.json")
-data_2023 = gather_data("articles_2023.json")
+data_2013 = gather_data("articles_2013.json")  # 18
+data_2023 = gather_data("articles_2023.json")  # 30
 
 word_count_hist_2013 = map_word_count(data_2013)
 char_count_hist_2013 = map_char_count(data_2013)
