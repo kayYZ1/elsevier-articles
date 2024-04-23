@@ -1,4 +1,5 @@
 import json
+import matplotlib.pyplot as plt
 
 
 def char_count(text):
@@ -41,8 +42,43 @@ def gather_data(file_name):
     return data
 
 
+def map_word_count(data):
+    word_counts = list()
+    for entry in data:
+        word_counts.append(entry["word_count"])
+    return word_counts
+
+
+def map_char_count(data):
+    char_counts = list()
+    for entry in data:
+        char_counts.append(entry["char_count"])
+    return char_counts
+
+
+def map_char_count_no_space(data):
+    char_counts_no_space = list()
+    for entry in data:
+        char_counts_no_space.append(entry["char_count_no_space"])
+    return char_counts_no_space
+
+
 data_2013 = gather_data("articles_2013.json")
 data_2023 = gather_data("articles_2023.json")
 
-print(data_2013, "\n")
-print(data_2023)
+word_count_hist_2013 = map_word_count(data_2013)
+char_count_hist_2013 = map_char_count(data_2013)
+char_count_no_space_hist_2013 = map_char_count_no_space(data_2013)
+
+plt.hist(word_count_hist_2013)
+plt.show()
+
+"""
+plt.hist(char_count_hist_2013)
+plt.show()
+
+plt.hist(char_count_no_space_hist_2013)
+plt.show()
+"""
+
+print(map_word_count(data_2013))
