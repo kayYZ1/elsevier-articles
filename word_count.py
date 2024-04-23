@@ -1,5 +1,6 @@
 import json
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def char_count(text):
@@ -66,6 +67,24 @@ def map_char_count_no_space(data):
     return char_counts_no_space
 
 
+def data_values(data):
+    mean_value = np.mean(data)
+    std_dev = np.std(data)
+    variance = np.var(data)
+    lower_quartile = np.percentile(data, 25)
+    upper_quartile = np.percentile(data, 75)
+    lower_decile = np.percentile(data, 10)
+    upper_decile = np.percentile(data, 90)
+
+    print(f"Średnia: {mean_value:.2f}")
+    print(f"Odchylenie standardowe: {std_dev:.2f}")
+    print(f"Wariancja: {variance:.2f}")
+    print(f"Kwartyl dolny: {lower_quartile:.2f}")
+    print(f"Kwartyl górny: {upper_quartile:.2f}")
+    print(f"Decyl dolny: {lower_decile:.2f}")
+    print(f"Decyl górny: {upper_decile:.2f}")
+
+
 data_2013 = gather_data("articles_2013.json")  # 18
 data_2023 = gather_data("articles_2023.json")  # 30
 
@@ -79,24 +98,42 @@ char_count_no_space_hist_2023 = map_char_count_no_space(data_2023)
 
 plt.hist(char_count_no_space_hist_2013)
 plt.title("Liczba znaków bez spacji - Elsevier 2013")
+plt.xlabel("Liczba artykułów")
+plt.ylabel("Liczba znaków")
 plt.show()
+data_values(char_count_no_space_hist_2013)
 
 plt.hist(char_count_hist_2013)
 plt.title("Liczba znaków ze spacjami - Elsevier 2013")
+plt.xlabel("Liczba artykułów")
+plt.ylabel("Liczba znaków")
 plt.show()
+data_values(char_count_hist_2013)
 
 plt.hist(word_count_hist_2013)
 plt.title("Liczba wyrazów - Elsevier 2013")
+plt.xlabel("Liczba artykułów")
+plt.ylabel("Liczba wyrazów")
 plt.show()
+data_values(word_count_hist_2013)
 
-plt.hist(char_count_no_space_hist_2013)
+plt.hist(char_count_no_space_hist_2023)
 plt.title("Liczba znaków bez spacji - Elsevier 2023")
+plt.xlabel("Liczba artykułów")
+plt.ylabel("Liczba znaków")
 plt.show()
+data_values(char_count_no_space_hist_2023)
 
 plt.hist(char_count_hist_2023)
 plt.title("Liczba znaków ze spacjami - Elsevier 2023")
+plt.xlabel("Liczba artykułów")
+plt.ylabel("Liczba znaków")
 plt.show()
+data_values(char_count_hist_2023)
 
 plt.hist(word_count_hist_2023)
 plt.title("Liczba wyrazów - Elsevier 2023")
+plt.xlabel("Liczba artykułów")
+plt.ylabel("Liczba wyrazów")
 plt.show()
+data_values(word_count_hist_2023)
