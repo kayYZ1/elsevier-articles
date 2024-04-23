@@ -5,7 +5,7 @@ api_key = "7e9c35d9d78f7e34567e6e4eef3ce6c1"
 base_url = "https://api.elsevier.com/content/search/sciencedirect"
 
 query = "(KEY machine learning)"
-url = f"{base_url}?apiKey={api_key}&query={query}&date=2023&count=100"
+url = f"{base_url}?apiKey={api_key}&query={query}&date=2013&count=100"
 
 response = requests.get(url)
 
@@ -39,7 +39,7 @@ for doi in doi_list:
             }
             articles[doi] = valid_article
 
-            if len(articles) == 15:
+            if len(articles) == 30:
                 break
 
     else:
@@ -50,5 +50,5 @@ articles_json = json.dumps(articles, indent=4)
 art2013 = "articles_2013.json"
 art2023 = "articles_2023.json"
 
-with open(art2023, "w") as file:
+with open(art2013, "w") as file:
     file.write(articles_json)
