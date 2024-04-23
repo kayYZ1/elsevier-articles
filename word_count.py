@@ -23,12 +23,15 @@ def gather_data(file_name):
 
     data = list()
 
-    for key, article in articles.items():
+    for _, article in articles.items():
         text_split = article["Text"].split()
+
+        date_split = article["Date"].split()
+        date = date_split[len(date_split) - 1]
 
         data_entry = {
             "title": article["Title"],
-            "date": article["Date"],
+            "date": date,
             "word_count": len(text_split),
             "char_count": char_count(article["Text"]),
             "char_count_no_space": char_count_no_space(article["Text"]),
