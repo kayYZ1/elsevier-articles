@@ -1,6 +1,21 @@
 import json
 
 
+def char_count(text):
+    count = 0
+    for _ in text:
+        count += 1
+    return count
+
+
+def char_count_no_space(text):
+    count = 0
+    for char in text:
+        if char != " ":
+            count += 1
+    return count
+
+
 def gather_data(file_name):
     file = open(file_name)
 
@@ -8,15 +23,15 @@ def gather_data(file_name):
 
     data = list()
 
-    for article in articles.items():
+    for key, article in articles.items():
         text_split = article["Text"].split()
 
         data_entry = {
             "title": article["Title"],
-            "date": article["Date"][0:4],
+            "date": article["Date"],
             "word_count": len(text_split),
-            "char_count": 0,
-            "char_count_no_space": 0,
+            "char_count": char_count(article["Text"]),
+            "char_count_no_space": char_count_no_space(article["Text"]),
         }
         data.append(data_entry)
 
