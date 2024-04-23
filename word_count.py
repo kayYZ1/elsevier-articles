@@ -39,6 +39,9 @@ def gather_data(file_name):
         }
         data.append(data_entry)
 
+        if len(data) == 15:
+            break
+
     return data
 
 
@@ -70,15 +73,30 @@ word_count_hist_2013 = map_word_count(data_2013)
 char_count_hist_2013 = map_char_count(data_2013)
 char_count_no_space_hist_2013 = map_char_count_no_space(data_2013)
 
-plt.hist(word_count_hist_2013)
+word_count_hist_2023 = map_word_count(data_2023)
+char_count_hist_2023 = map_char_count(data_2023)
+char_count_no_space_hist_2023 = map_char_count_no_space(data_2023)
+
+plt.hist(char_count_no_space_hist_2013)
+plt.title("Liczba znaków bez spacji - Elsevier 2013")
 plt.show()
 
-"""
 plt.hist(char_count_hist_2013)
+plt.title("Liczba znaków ze spacjami - Elsevier 2013")
+plt.show()
+
+plt.hist(word_count_hist_2013)
+plt.title("Liczba wyrazów - Elsevier 2013")
 plt.show()
 
 plt.hist(char_count_no_space_hist_2013)
+plt.title("Liczba znaków bez spacji - Elsevier 2023")
 plt.show()
-"""
 
-print(map_word_count(data_2013))
+plt.hist(char_count_hist_2023)
+plt.title("Liczba znaków ze spacjami - Elsevier 2023")
+plt.show()
+
+plt.hist(word_count_hist_2023)
+plt.title("Liczba wyrazów - Elsevier 2023")
+plt.show()
